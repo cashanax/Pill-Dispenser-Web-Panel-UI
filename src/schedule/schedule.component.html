@@ -1,0 +1,20 @@
+<table>
+  <thead>
+  <tr>
+    <th>Slot</th>
+    <th>Date</th>
+    <th>Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let date of dates; let i = index">
+    <td>{{i+1}}</td>
+    <td>
+
+      <input [(ngModel)]="dates[i].date" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="date">
+    </td>
+    <td>
+      <input [(ngModel)]="dates[i].time" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="time">
+  </tr>
+  </tbody>
+</table>

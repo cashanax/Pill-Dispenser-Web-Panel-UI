@@ -1,0 +1,20 @@
+<body>
+<header>
+  <div class="topbar">
+    <h1 class="text-center">
+      Billy the Pill Dispenser
+      <a class="logout-text" href="./index.html">Log Out</a>
+    </h1>
+  </div>
+</header>
+<nav class="sidenav">
+  <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+  <a [routerLink]="['/gallery']" routerLinkActive="active">Gallery</a>
+  <a [routerLink]="['/schedule']" routerLinkActive="active">Schedule</a>
+  <a [routerLink]="['/history']" routerLinkActive="active">History</a>
+  <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
+</nav>
+<div style="padding-left: 250px; padding-top: 20px">
+  <router-outlet></router-outlet>
+</div>
+</body>
