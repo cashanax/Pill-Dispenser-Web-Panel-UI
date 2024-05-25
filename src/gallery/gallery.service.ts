@@ -12,7 +12,7 @@ export interface Image {
 })
 export class GalleryService {
 
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://15.236.159.186:3000';
 
   constructor(private http: HttpClient) { }
 
