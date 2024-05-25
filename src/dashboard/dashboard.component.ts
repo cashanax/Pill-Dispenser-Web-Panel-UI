@@ -15,7 +15,7 @@ export class DashboardComponent {
     this.getConfig();
   }
   getConfig() {
-    this.http.get('http://localhost:3000/config').subscribe(data => {
+    this.http.get('http://15.236.159.186:3000/config').subscribe(data => {
       this.config = data;
     });
   }

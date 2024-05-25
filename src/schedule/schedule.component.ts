@@ -17,7 +17,7 @@ export class ScheduleComponent {
   }
 
   getData() {
-    this.http.get<{id: string, date: string, time: string}[]>('http://localhost:3000/schedule').subscribe((slots) => {
+    this.http.get<{id: string, date: string, time: string}[]>('http://15.236.159.186:3000/schedule').subscribe((slots) => {
       this.dates = slots.map(slot => {
         let date = new Date(slot.date);
         if (isNaN(date.getTime())) {
@@ -35,7 +35,7 @@ export class ScheduleComponent {
     patchData(index: number, date: string, time: string) {
       const id = this.dates[index].id;
       const updatedSlot = { date, time };
-      this.http.patch(`http://localhost:3000/schedule/${id}`, updatedSlot).subscribe(response => {
+      this.http.patch(`http://15.236.159.186:3000/schedule/${id}`, updatedSlot).subscribe(response => {
         console.log(response);
       });
     }
