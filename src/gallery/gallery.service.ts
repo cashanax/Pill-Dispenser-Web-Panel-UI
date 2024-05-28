@@ -12,7 +12,8 @@ export interface Image {
 })
 export class GalleryService {
 
-  private apiUrl = 'http://15.236.159.186:3000';
+  private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
+
 
   constructor(private http: HttpClient) { }
 

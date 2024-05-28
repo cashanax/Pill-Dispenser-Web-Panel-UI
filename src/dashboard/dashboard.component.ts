@@ -11,11 +11,13 @@ import {CommonModule} from "@angular/common";
 })
 export class DashboardComponent {
   config: any;
+  private apiUrl = 'http://localhost:8008'; // Base URL for the API
+
   constructor(private http: HttpClient) {
     this.getConfig();
   }
   getConfig() {
-    this.http.get('http://15.236.159.186:3000/config').subscribe(data => {
+    this.http.get(`${this.apiUrl}/config`).subscribe(data => {
       this.config = data;
     });
   }
