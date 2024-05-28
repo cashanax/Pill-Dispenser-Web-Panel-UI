@@ -11,7 +11,7 @@ import {CommonModule} from "@angular/common";
 })
 export class DashboardComponent {
   config: any;
-  private apiUrl = 'http://localhost:8008'; // Base URL for the API
+  private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
 
   constructor(private http: HttpClient) {
     this.getConfig();

@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="container">
+  <h2 class="text-center" style="color: #1B5A5F">Login to access device panel</h2>
+  <br>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="loginForm">
+    <div class="input-group">
+      <label for="email" class="label">Email</label>
+      <input type="text" id="email" class="input" formControlName="email">
+      <span class="error-message"></span>
+    </div>
+    <br>
+    <div class="input-group">
+      <label for="password" class="label">Password</label>
+      <input type="password" id="password" class="input" formControlName="password">
+      <span class="error-message"></span>
+    </div>
+    <br>
+    <button class="button" type="submit">Login</button>
+  </form>
+</div>
