@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
-import {DashboardComponent} from "../dashboard/dashboard.component";
-import {GalleryComponent} from "../gallery/gallery.component";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  isLoggedIn = false;
+
+  constructor(private authService: AuthService) {
+    this.authService.isLoggedIn.subscribe((loggedIn: boolean) => {
+      this.isLoggedIn = loggedIn;
+    });
+  }
+
+  ngOnInit() {
+    this.authService.checkLoginStatus();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
   title = 'BillyPanel';
 }
