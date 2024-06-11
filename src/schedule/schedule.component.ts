@@ -11,7 +11,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ScheduleComponent {
   dates :any;
-  private apiUrl = 'http://localhost:8008/api'; // Base URL for the API
+  private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
 
   constructor(private http: HttpClient) {
     this.getData();

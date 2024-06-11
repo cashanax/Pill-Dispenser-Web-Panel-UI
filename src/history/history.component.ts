@@ -15,7 +15,7 @@ export class HistoryComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:8008/api/history').subscribe(data => {
+    this.http.get<any[]>('http://15.236.159.186/api/history').subscribe(data => {
       this.dates = data.map(item => {
         const date = new Date(item.date * 1000);
         console.log(date);
