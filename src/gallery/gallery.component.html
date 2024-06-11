@@ -1,5 +1,6 @@
+<h1>Image Gallery</h1>
 <div>
-  <h2>Image Gallery</h2>
+
   <div *ngFor="let image of imageNames">
     <img [src]="getImageUrl(image)" alt="{{image}}">
     <p>Modified Date: {{image.modifiedDate}}</p>
