@@ -11,34 +11,42 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ScheduleComponent {
   dates :any;
-  private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
+  private apiUrl = 'http://localhost:8008/api'; // Base URL for the API
 
   constructor(private http: HttpClient) {
     this.getData();
   }
 
   getData() {
-    this.http.get<{id: string, date: string, time: string}[]>(`${this.apiUrl}/schedule`).subscribe((slots) => {
+    this.http.get<{date: number}[]>(`${this.apiUrl}/schedule`).subscribe((slots) => {
       this.dates = slots.map(slot => {
-        let date = new Date(slot.date);
+        let date = new Date(slot.date * 1000); // Convert Unix timestamp to JavaScript Date object
         if (isNaN(date.getTime())) {
-          console.error(`Invalid date format for slot with id ${slot.id}: date = ${slot.date}`);
+          console.error(`Invalid date format for slot: date = ${slot.date}`);
           return null;
         }
         date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-        return { id: slot.id, date: date.toISOString().slice(0,10), time: slot.time };
+        return {
+          date: date.toISOString().slice(0,10), // Extract the date in YYYY-MM-DD format
+          time: date.toISOString().slice(11,16) // Extract the time in HH:MM format
+        };
       }).filter(slot => slot !== null);
       console.log(this.dates);
     });
   }
 
 
-    patchData(index: number, date: string, time: string) {
-      const id = this.dates[index].id;
-      const updatedSlot = { date, time };
-      this.http.patch(`${this.apiUrl}/schedule/${id}`, updatedSlot).subscribe(response => {
-        console.log(response);
-      });
-    }
+  patchData(index: number, date: string, time: string) {
+    const dateTime = new Date(`${date}T${time}`);
+    const epochTime = Math.floor(dateTime.getTime() / 1000);
+    const updatedSlot = {
+      id: index,
+      date: epochTime
+    };
+    console.log(epochTime);
+    this.http.patch(`${this.apiUrl}/schedule/${index}`, updatedSlot).subscribe(response => {
+      console.log(response);
+    });
+  }
 
 }

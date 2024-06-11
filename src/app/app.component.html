@@ -1,25 +1,38 @@
 
-<body>
-<header>
-  <div class="topbar">
-    <h1 class="text-center">
-      Billy the Pill Dispenser
-      <a *ngIf="isLoggedIn" class="logout-text" (click)="logout()">Logout</a>
-    </h1>
-  </div>
-</header>
-<app-login *ngIf="!isLoggedIn"></app-login>
-<div *ngIf="isLoggedIn">
 
-  <nav class="sidenav">
-    <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
-    <a [routerLink]="['/gallery']" routerLinkActive="active">Gallery</a>
-    <a [routerLink]="['/schedule']" routerLinkActive="active">Schedule</a>
-    <a [routerLink]="['/history']" routerLinkActive="active">History</a>
-    <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
-  </nav>
-  <div style="padding-left: 250px; padding-top: 20px">
-    <router-outlet></router-outlet>
-  </div>
+<div class="topbar">
+  <h1 class="text-center">
+    <a *ngIf="isLoggedIn$ | async" type="button" class="toggle-menu" (click)="drawer.toggle()">
+      Toggle sidenav
+    </a>
+    Billy the Pill Dispenser
+
+    <a *ngIf="isLoggedIn$ | async" class="logout-text" (click)="logout()">Logout</a>  </h1>
 </div>
-</body>
+<!--<app-login *ngIf="!isLoggedIn"></app-login>-->
+<!--<div *ngIf="isLoggedIn">-->
+
+  <mat-drawer-container class="example-container" autosize>
+
+    <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="isDrawerOpened">
+      <nav class="navigator" >
+        <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+        <a [routerLink]="['/gallery']" routerLinkActive="active">Gallery</a>
+        <a [routerLink]="['/schedule']" routerLinkActive="active">Schedule</a>
+        <a [routerLink]="['/history']" routerLinkActive="active">History</a>
+        <a [routerLink]="['/settings']" routerLinkActive="active">Settings</a>
+
+      </nav>
+    </mat-drawer>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+
+  </mat-drawer-container>
+
+
+
+<!--</div>-->
+

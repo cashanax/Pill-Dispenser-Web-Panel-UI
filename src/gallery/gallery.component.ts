@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class GalleryComponent implements OnInit {
   imageNames: Image[] = [];
-  constructor(private galleryService: GalleryService) { }
+  constructor(private galleryService: GalleryService)  { }
 
   ngOnInit() {
     this.galleryService.getImages().subscribe((images) => {

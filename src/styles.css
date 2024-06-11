@@ -1,4 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url(@angular/material/prebuilt-themes/indigo-pink.css);
+html{
+  height: 100%;
+}
+body{
+  font-family: sans-serif;
+  background-color:#84CFD4;
+  font-size:16px;
+  margin: 0;
+  padding-top: 100px;
+}
+
 *{
   box-sizing:border-box
 }
@@ -8,13 +19,7 @@ img{
   padding-right: 10px;
   padding-bottom: 5px;
 }
-body{
-  font-family:"Open Sans", sans-serif;
-  background-color:#84CFD4;
-  font-size:16px;
-  margin: 0px;
-  margin: left 220px;
-}
+
 #imagePreview{
   width: 300px;
 
@@ -26,10 +31,23 @@ h1,h2,h3,h4,h5,h6{
 
 .text-center{
   text-align:center;
-  margin-top: 0px;
+  margin-top: 0;
   padding-top:25px;
   position: relative;
 
+}
+
+.toggle-menu{
+  text-align:left;
+  float: left;
+  text-decoration:none;
+  padding: 5px;
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 0;
+}
+.toggle-menu:hover{
+  background-color: #4b9ea5;
 }
 .logout-text{
   text-align:right;
@@ -37,7 +55,11 @@ h1,h2,h3,h4,h5,h6{
   text-decoration:none;
   padding: 5px;
   font-size: 28px;
+  cursor: pointer;
+}
 
+.logout-text:hover{
+  background-color: #4b9ea5;
 }
 
 .login .container{
@@ -90,12 +112,15 @@ h1,h2,h3,h4,h5,h6{
   filter:brightness(110%)
 }
 
-.topbar{
-
-  background-color:#1B5A5F;
-  margin: 0px;
+.topbar {
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
+  background-color: #1B5A5F;
   height: 100px;
+  padding: 0;
+  z-index: 1;
 }
 
 .topbar a{
@@ -108,28 +133,22 @@ h1,h2,h3,h4,h5,h6{
   margin-right: 32px;
   margin-left: 140px;
 }
-
-.sidenav {
-  height: 100%;
-  width: 220px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #1B5A5F;
-  overflow-x: hidden;
-  padding-top: 100px;
+.example-sidenav{
+  background: #1B5A5F;
+  height: 80vh;
+  padding-right: 50px;
+  /*overflow: hidden;*/
 }
-
-.sidenav a {
-  padding: 6px 6px 6px 32px;
+.example-sidenav a {
+  padding: 3% 3% 3% 10%;
+  width: 25vb;
   text-decoration: none;
   font-size: 25px;
   color: #84CFD4;
   display: block;
-}
+  transition: 0.3s;}
 
-.sidenav a:hover {
+.example-sidenav a:hover {
   color: white;
   background-color: #84CFD4;
 }
@@ -137,6 +156,68 @@ h1,h2,h3,h4,h5,h6{
 .sidenav a.active {
   background-color: #84CFD4;
   color: white;
+}
+
+
+.example-container {
+  /*height: 100vh;*/
+  width: 100vw;
+  overflow: hidden;
+  height: calc(100vh - 100px); /* Subtract the height of the topbar */;
+
+}
+
+.example-sidenav-content {
+  /*display: flex;*/
+  height: 100%;
+  /*padding-top: 150px;*/
+  padding-bottom: 200px;
+  background: #84CFD4;
+  /*overflow: hidden;*/
+  border: 0;
+}
+
+.content {
+  padding-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  background: #84CFD4;
+  position: relative;
+  flex-direction: column; /* Add this if your items are not stacking vertically */
+}
+
+.example-sidenav {
+  display: flex;
+  margin: 0;
+  height: calc(100vh - 100px); /* Subtract the height of the topbar */
+  padding: 0;
+  width: 100%;
+  border: 0;
+  background-color: #1B5A5F;
+  overflow: hidden;
+
+}
+nav{
+  padding: 0;
+  margin: 0;
+  background: #1B5A5F;
+  height: 100%; /* Subtract the height of the topbar */
+  /*overflow: hidden;*/
+  }
+
+.content{
+  justify-content: right;
+  position: relative;
+  /*padding-left: 10vb;*/
+  /*padding-right: 50vb;*/
+
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*position: relative;*/
+  /*text-align: center;*/
 }
 
 
