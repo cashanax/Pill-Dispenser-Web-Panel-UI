@@ -181,13 +181,15 @@ h1,h2,h3,h4,h5,h6{
 .content {
   padding-top: 5vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  min-height: 100%;
   align-items: center;
   text-align: center;
-  height: 100%;
-  background: #84CFD4;
   position: relative;
-  flex-direction: column; /* Add this if your items are not stacking vertically */
+  background-color: #84CFD4;
+  justify-content: right;
+  font-size: 20px; /* Increase the font size */
+  font-family: Arial, sans-serif; /* Change the font family */
 }
 
 .example-sidenav {
@@ -209,17 +211,27 @@ nav{
   /*overflow: hidden;*/
   }
 
-.content{
-  justify-content: right;
-  position: relative;
-  /*padding-left: 10vb;*/
-  /*padding-right: 50vb;*/
-
-  /*justify-content: center;*/
-  /*align-items: center;*/
-  /*position: relative;*/
-  /*text-align: center;*/
+.schedule-container {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  background-color: #1B5A5F; /* Change the background color */
+  color: #fff; /* Change the font color */
+  border: none; /* Remove the border */
+  padding: 10px 20px; /* Add some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove the underline */
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; /* Change the cursor when hovering over the button */
+  border-radius: 12px; /* Add rounded corners */
 }
 
+button:hover {
+  background-color: #527d80; /* Change the background color when hovering over the button */
+  color: white; /* Change the font color when hovering over the button */
+}
 
 

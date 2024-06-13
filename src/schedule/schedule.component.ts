@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-schedule',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ],
   templateUrl: './schedule.component.html',
   styleUrl: './schedule.component.css'
 })
-export class ScheduleComponent {
+export class ScheduleComponent  {
   dates :any;
+  repeatDate: string;
+  repeatPeriod: string;
   private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
 
   constructor(private http: HttpClient) {
     this.getData();
-  }
+    this.repeatDate = ''; // Initialize repeatDate
+    this.repeatPeriod = ''; // Initialize repeatPeriod
 
+  }
+  repeatDateEveryPeriod() {
+    // Repeat the date based on the selected period.
+    // This is just a placeholder. You need to implement this method based on your requirements.
+  }
   getData() {
     this.http.get<{date: number}[]>(`${this.apiUrl}/schedule`).subscribe((slots) => {
       this.dates = slots.map(slot => {
