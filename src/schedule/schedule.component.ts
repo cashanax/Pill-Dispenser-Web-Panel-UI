@@ -13,13 +13,15 @@ export class ScheduleComponent  {
   dates :any;
   repeatDate: string;
   repeatPeriod: string;
+  repeatTime: string; // New property
+
   private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
 
   constructor(private http: HttpClient) {
     this.getData();
     this.repeatDate = ''; // Initialize repeatDate
     this.repeatPeriod = ''; // Initialize repeatPeriod
-
+    this.repeatTime = ''; // Initialize repeatTime
   }
   repeatDateEveryPeriod() {
     // Repeat the date based on the selected period.

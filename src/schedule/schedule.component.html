@@ -21,16 +21,19 @@
   </tbody>
 </table>
 <div class="repeat-panel">
-  <label for="repeatDate">Repeat Date:</label>
+  <label for="repeatDate">Start Date:</label>
   <input id="repeatDate" [(ngModel)]="repeatDate" type="date">
+  <br>
+  <label for="repeatTime">Start Time:</label>
+  <input id="repeatTime" [(ngModel)]="repeatTime" type="time">
 <br>
-  <label for="repeatPeriod">Repeat Period:</label>
+  <label for="repeatPeriod">Period:</label>
   <select id="repeatPeriod" [(ngModel)]="repeatPeriod">
     <option value="daily">Daily</option>
     <option value="weekly">Weekly</option>
     <option value="monthly">Monthly</option>
   </select>
 
-  <button (click)="repeatDateEveryPeriod()">Repeat</button>
+  <button (click)="repeatDateEveryPeriod()">Confirm</button>
 </div>
   </div>
