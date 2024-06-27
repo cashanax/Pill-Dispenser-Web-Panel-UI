@@ -1,8 +1,8 @@
 <h1>Image Gallery</h1>
-<div>
-
-  <div *ngFor="let image of imageNames">
+<div class="gallery-grid">
+  <div  class="gallery-item"  *ngFor="let image of imageNames">
     <img [src]="getImageUrl(image)" alt="{{image}}">
-    <p>Modified Date: {{image.modifiedDate}}</p>
+    <p>Date: {{formattedDate(image.modifiedDate)}}</p>
+    <button>Approve</button>
   </div>
 </div>

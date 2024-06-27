@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CommonModule} from "@angular/common";
+import {LoginComponent} from "../login/login.component";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +14,7 @@ import {CommonModule} from "@angular/common";
 export class DashboardComponent {
   config: any;
   private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
-
+  currentD: any;
   constructor(private http: HttpClient) {
     this.getConfig();
   }
@@ -21,4 +23,6 @@ export class DashboardComponent {
       this.config = data;
     });
   }
+
+  protected readonly LoginComponent = LoginComponent;
 }

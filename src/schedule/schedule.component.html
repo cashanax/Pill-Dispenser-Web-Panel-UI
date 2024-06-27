@@ -1,39 +1,44 @@
 <h1>Schedule</h1>
 <div class="schedule-container">
-<table>
-  <thead>
-  <tr>
-    <th>Slot</th>
-    <th>Date</th>
-    <th>Time</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let date of dates; let i = index">
-    <td>{{i}}</td>
-    <td>
-      <input [(ngModel)]="dates[i].date" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="date">
-    </td>
-    <td>
-      <input [(ngModel)]="dates[i].time" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="time">
-    </td>
-  </tr>
-  </tbody>
-</table>
-<div class="repeat-panel">
-  <label for="repeatDate">Start Date:</label>
-  <input id="repeatDate" [(ngModel)]="repeatDate" type="date">
-  <br>
-  <label for="repeatTime">Start Time:</label>
-  <input id="repeatTime" [(ngModel)]="repeatTime" type="time">
-<br>
-  <label for="repeatPeriod">Period:</label>
-  <select id="repeatPeriod" [(ngModel)]="repeatPeriod">
-    <option value="daily">Daily</option>
-    <option value="weekly">Weekly</option>
-    <option value="monthly">Monthly</option>
-  </select>
-
-  <button (click)="repeatDateEveryPeriod()">Confirm</button>
-</div>
+  <table>
+    <thead>
+    <tr>
+      <th>Slot</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let date of dates; let i = index">
+      <td>{{i + 1}}</td>
+      <td>
+        <input [(ngModel)]="dates[i].date" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="date">
+      </td>
+      <td>
+        <input [(ngModel)]="dates[i].time" (ngModelChange)="patchData(i, dates[i].date, dates[i].time)" type="time">
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="repeat-panel">
+    <label for="repeatDate">Start Date:</label>
+    <input id="repeatDate" [(ngModel)]="repeatDate" type="date">
+    <br>
+    <label for="repeatTime">Start Time:</label>
+    <input id="repeatTime" [(ngModel)]="repeatTime" type="time">
+    <br>
+    <label for="repeatPeriod">Every
+      <select id="repeatPeriod" [(ngModel)]="repeatPeriod">
+        <option *ngFor="let hour of hours" [value]="hour">{{hour}}</option>
+      </select>
+      Hours
+    </label>
+    <br>
+    <button (click)="repeatDateEveryPeriod()">Confirm</button>
   </div>
+</div>
+<div *ngIf="showWarning" class="warning-message">
+  Please enter a start date.
+</div>
+
+

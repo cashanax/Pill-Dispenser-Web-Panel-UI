@@ -18,7 +18,12 @@ export class GalleryComponent implements OnInit {
       this.imageNames = images;
     });
   }
+  formattedDate(dateString: string): string {
+    const parsedDate = new Date(dateString);
+    return parsedDate.toISOString().replace("T", " ").replace("Z", "")
+      .slice(0, -4);
 
+  }
   getImageUrl(image: Image): string {
     return this.galleryService.getImage(image.name);
   }

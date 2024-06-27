@@ -10,25 +10,42 @@ import {HttpClient} from "@angular/common/http";
   styleUrl: './schedule.component.css'
 })
 export class ScheduleComponent  {
-  dates :any;
-  repeatDate: string;
-  repeatPeriod: string;
-  repeatTime: string; // New property
 
   private apiUrl = 'http://15.236.159.186/api'; // Base URL for the API
+
+  dates: { date: string, time: string }[] = Array(21).fill({ date: '', time: '' });
+  repeatDate: string;
+  repeatPeriod: number;
+  repeatTime: string;
+  showWarning: boolean = false;
+  hours: number[] = Array.from({ length: 24 }, (_, i) => i + 1);
 
   constructor(private http: HttpClient) {
     this.getData();
     this.repeatDate = ''; // Initialize repeatDate
-    this.repeatPeriod = ''; // Initialize repeatPeriod
+    this.repeatPeriod = 1; // Initialize repeatPeriod with default value 1
     this.repeatTime = ''; // Initialize repeatTime
   }
   repeatDateEveryPeriod() {
-    // Repeat the date based on the selected period.
-    // This is just a placeholder. You need to implement this method based on your requirements.
+    if (!this.repeatDate) {
+      this.showWarning = true;
+      return;
+    }
+    this.showWarning = false;
+    const startDateTime = new Date(`${this.repeatDate}T${this.repeatTime}`);
+    for (let i = 0; i < 21; i++) {
+      const currentDateTime = new Date(startDateTime);
+      currentDateTime.setHours(startDateTime.getHours() + 1 + i * this.repeatPeriod);
+      this.dates[i] = {
+        date: currentDateTime.toISOString().split('T')[0],
+        time: currentDateTime.toISOString().split('T')[1].slice(0, 5)
+      };
+      // Call patchData to update the backend
+      this.patchData(i, this.dates[i].date, this.dates[i].time);
+    }
   }
   getData() {
-    this.http.get<{date: number}[]>(`${this.apiUrl}/schedule`).subscribe((slots) => {
+    this.http.get<{ date: number }[]>(`${this.apiUrl}/schedule`).subscribe((slots) => {
       this.dates = slots.map(slot => {
         let date = new Date(slot.date * 1000); // Convert Unix timestamp to JavaScript Date object
         if (isNaN(date.getTime())) {
@@ -37,10 +54,10 @@ export class ScheduleComponent  {
         }
         date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
         return {
-          date: date.toISOString().slice(0,10), // Extract the date in YYYY-MM-DD format
-          time: date.toISOString().slice(11,16) // Extract the time in HH:MM format
+          date: date.toISOString().slice(0, 10), // Extract the date in YYYY-MM-DD format
+          time: date.toISOString().slice(11, 16) // Extract the time in HH:MM format
         };
-      }).filter(slot => slot !== null);
+      }).filter((slot): slot is { date: string, time: string } => slot !== null);
       console.log(this.dates);
     });
   }
