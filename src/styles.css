@@ -5,7 +5,7 @@ html{
 body{
   font-family: sans-serif;
   background: #84CFD4;
-  font-size:16px;
+  font-size:18px;
   margin: 0;
   padding-top: 100px;
 }
@@ -145,7 +145,7 @@ h1,h2,h3,h4,h5,h6{
   padding: 3% 3% 3% 10%;
   width: 8em ;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 28px;
   color: #84CFD4;
   display: block;
   transition: 0.3s;}
@@ -189,7 +189,7 @@ h1,h2,h3,h4,h5,h6{
   position: relative;
   background-color: #84CFD4;
   justify-content: right;
-  font-size: 20px; /* Increase the font size */
+  font-size: 24px; /* Increase the font size */
   font-family: Arial, sans-serif; /* Change the font family */
 }
 
@@ -228,7 +228,8 @@ nav{
   background-color: #84CFD4; /* Light background color */
   height: fit-content;
   margin-left: 0;
-  line-height: 32px;
+  line-height: 3rem;
+  align-content: center;
 
 }
 button {
@@ -262,6 +263,25 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .history-list{
-  line-height: 38px;
+  line-height: 3rem;
   margin: 0 20vw 5px 20vw;
+  text-align: center;
+
+}
+.dashboard-box{
+  line-height: 3rem;
+
+  padding: 16px; /* Internal padding */
+  height: fit-content;
+  text-align: center;
+  }
+.dashboard-content{
+  border: 1px solid #004045; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #84CFD4; /* Light background color */
+  display: inline-block;
+  text-align: left;
+  padding: 1rem 2rem 1rem 2rem;
+
 }
