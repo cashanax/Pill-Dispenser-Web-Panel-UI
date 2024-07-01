@@ -1,6 +1,10 @@
+
 # BillyPanel
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+
+## Overview
+Fronted part of the Pill dispenser app, full report available under this link: https://www.eps2024-wiki2.dee.isep.ipp.pt/doku.php?id=report
 
 ## Development server
 
